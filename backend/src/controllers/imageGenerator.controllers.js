@@ -60,7 +60,7 @@ const imagePromises = para.map(async (prompt) => {
     try {
       const response = await fetch("https://api-inference.huggingface.co/models/seawolf2357/ntower", {
         headers: {
-          Authorization: `Bearer ${process.env.TOKEN}`,
+          Authorization: `Bearer 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`,
           "Content-Type": "application/json",
         },
         method: "POST",
