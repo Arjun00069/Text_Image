@@ -55,20 +55,20 @@ const para = paraSeperator(content);
 // console.log(result);
 //   const image_content =  await blobToBase64(result);
 //   imageArray.push(image_content);
-
+console.log(para);
 const imagePromises = para.map(async (prompt) => {
     try {
-      const response = await fetch("https://api-inference.huggingface.co/models/seawolf2357/ntower", {
-        headers: {
-          Authorization: `Bearer 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`,
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify(prompt),
-      });
-      if (!response.ok) {
-        throw new Error('Failed to fetch image');
-      }
+      const response = await fetch(
+        "https://api-inference.huggingface.co/models/prithivMLmods/Flux-C33-Design-LoRA",
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.TOKEN}`,
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(prompt),
+        }
+      );
       const result = await response.blob();
       return await blobToBase64(result);
     } catch (error) {
